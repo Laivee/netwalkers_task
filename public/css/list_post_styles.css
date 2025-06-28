@@ -3,13 +3,33 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
-    
 }
 
 html,
 body {
     height: 100%;
     
+}
+
+#addPostBtn2 {
+    text-decoration: none;
+}
+
+.notification {
+    padding: 12px 20px;
+    background-color: #e6ffed;
+    border: 1px solid #b2f5ea;
+    color: #2f855a;
+    border-radius: 5px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.formError {
+    color:red;
+    font-weight: bold;
 }
 
 body {

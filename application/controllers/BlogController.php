@@ -3,41 +3,66 @@
 class BlogController extends CI_Controller
 {
     public function __construct()
-    {
-        parent::__construct();
-        $this->load->model('Blog'); // Loads Blog model
-        $this->load->library('form_validation'); // Loads Form Validation library
-        $this->load->database(); //Load in the database connection
-    }
+	{
+		parent::__construct();
+
+		// Load libraries
+		$this->load->library(['form_validation', 'session']);
+
+		// Load helper functions
+		$this->load->helper(['url', 'form']);
+
+		// Load model
+		$this->load->model('blog');
+
+		// Load database (optional if already set in config/autoload.php)
+		$this->load->database();
+	}
+
 
     public function index()
     {
-		$this->load->view('head');
-		$this->load->view('header');
-		$this->load->view('index');
+		$data['title'] = 'List Blogs';
+		$this->load->view('head', $data);
+		$this->load->view('header', $data);
+		$this->load->view('index', $data);
 		$this->load->view('footer');
 
     }
 
     public function add_post()
     {
-        $this->form_validation->set_rules('title', 'Post Title', 'trim|required|callback_check_post_title');
-        $this->form_validation->set_rules('description', 'Description', 'trim|required');
+		$data['title'] = 'Add Post';
+
+		//we can actually use is_unique[posts.title] without needing a callback method
+        $this->form_validation->set_rules('title', 'Post Title', 'trim|required|callback_check_post_title'); 
+
+        $this->form_validation->set_rules('description', 'Description', 'trim|required|max_length[50]');
 
         if ($this->form_validation->run() === FALSE) {
-            $this->load->view('head');
-            $this->load->view('header');
-            $this->load->view('add_post');
+            $this->load->view('head', $data);
+            $this->load->view('header', $data);
+            $this->load->view('add_post', $data);
             $this->load->view('footer');
         } else {
-            echo "Validation passed!";
+
+			$data = [
+				'title' => $this->input->post('title'),
+				'description' => $this->input->post('description')
+			];
+
+			$this->session->set_flashdata('success', 'Success! Your post was published successfully!');
+
+			$this->blog->create_new_post($data);
+
+			redirect('/');
         }
     }
 
     // Callback method
     public function check_post_title($title)
     {
-        $exists = $this->Blog->check_post_title($title);
+        $exists = $this->blog->check_post_title($title);
 
         if (!empty($exists)) {
             $this->form_validation->set_message('check_post_title', 'This post title already exists!');

@@ -1,30 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
        <!-- Placeholder for main page content -->
-       <section class="content">
-          <div class="wrapper">
-            <nav class="navbar2">
-              <ul class="nav-links2">
-                <li class="nav-item2 active2">
-                  <a href="#" data-section="blogs">Blogs</a>
-                </li>
-                <li class="nav-item2">
-                  <a href="#" data-section="categories">Categories</a>
-                </li>
-                <li class="nav-item2">
-                  <a href="#" data-section="media">Media</a>
-                </li>
-              </ul>
-            </nav>
-
-            <div class="container2">
-              <div class="breadcrumb2">
-                <span
-                  style="font-weight: 700 !important; color: #4b4a4a !important"
-                  >Blogs</span
-                >
-                <span class="separator2">></span>
-                <span>List Blogs</span>
-              </div>
 
               <form class="blogForm2" method="post" action="<?php base_url('post/add') ?>">
                 <div class="formGroup2">
@@ -35,10 +10,10 @@
                     id="postTitle2"
                     class="inputBox2"
                     placeholder="search post title"
-                    value="<?php set_value('title'); ?>"
+                    value="<?php echo set_value('title'); ?>"
                   />
                 </div>
-                <?php echo form_error('title', '<div class="formError">', '</div>');?>
+                <?php echo form_error('title', '<p class="formError">', '</p>');?> <br />
 
                 <div class="formattingToolbar2">
                   <button type="button" class="formatBtn2" data-format="b">
@@ -75,7 +50,7 @@
                     placeholder="[b]bvn mm[/b]"
                   ><?php echo set_value('description'); ?></textarea>
                 </div>
-                <?php echo form_error('description', '<div class="formError">', '</div>');?>
+                <?php echo form_error('description', '<p class="formError">', '</p>');?><br/>
 
                 <div class="formGroup2">
                   <div id="uploadedImages2" class="uploadedImagesBox2">
@@ -95,5 +70,3 @@
                 </div>
               </form>
             </div>
-          </div>
-        </section>

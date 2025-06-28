@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRM Layout</title>
+    <title><?php echo $title ?></title>
     <link rel="stylesheet" href="<?php echo base_url(); ?>/public/css/add_post_styles.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>/public/css/list_post_styles.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>/public/css/add_post_prospects.css">

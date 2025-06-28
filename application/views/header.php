@@ -100,3 +100,27 @@
     </ul>
 </div>
     </header>
+
+    <?php if ($this->session->flashdata('success')): ?>
+        <div class="notification">
+            <?php echo $this->session->flashdata('success'); ?>
+        </div>
+    <?php endif; ?>
+
+    <section class="content">
+                <div class="wrapper">
+
+                                    <nav class="navbar2">
+        <ul class="nav-links2">
+            <li class="nav-item2 active2"><a href="#" data-section="blogs">Blogs</a></li>
+            <li class="nav-item2"><a href="#" data-section="categories">Categories</a></li>
+            <li class="nav-item2"><a href="#" data-section="media">Media</a></li>
+        </ul>
+    </nav>
+
+    <div class="container2">
+        <div class="breadcrumb2">
+            <span style="font-weight: 700 !important; color: #4B4A4A !important;">Blogs</span>
+            <span class="separator2">></span>
+            <span><?php echo $title; ?></span>
+        </div>

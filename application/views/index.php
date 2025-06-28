@@ -1,22 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <!-- Placeholder for main page content -->
-            <section class="content">
-                <div class="wrapper">
-
-                                    <nav class="navbar2">
-        <ul class="nav-links2">
-            <li class="nav-item2 active2"><a href="#" data-section="blogs">Blogs</a></li>
-            <li class="nav-item2"><a href="#" data-section="categories">Categories</a></li>
-            <li class="nav-item2"><a href="#" data-section="media">Media</a></li>
-        </ul>
-    </nav>
-
-    <div class="container2">
-        <div class="breadcrumb2">
-            <span style="font-weight: 700 !important; color: #4B4A4A !important;">Blogs</span>
-            <span class="separator2">></span>
-            <span>List Blogs</span>
-        </div>
+            
 
         <div class="filter-section2">
             <div class="filter-row2">
@@ -45,7 +29,8 @@
             <label for="searchInput2" class="filter-table-label2">Filter Table</label>
             <div class="filter-table2">
                 <input type="text" id="searchInput2" class="search-input2" placeholder="search post title">
-                <button id="addPostBtn2" class="btn2 btn-primary2">Add Post</button>
+                <a href="<?php echo site_url('post/add') ?>" id="addPostBtn2" class="btn2 btn-primary2">Add Post</a>
+
             </div>
         </div>
 
@@ -54,15 +39,19 @@
                 <thead>
                     <tr>
                         <th>S/N</th>
-                        <th>Title/Category</th>
-                        <th>Title/Views</th>
+                        <th>Author</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Address</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td>Lagos</td>
+                        <td>Dev Etom</td>
+                        <td>Some Intersting title here</td>
+                        <td>Here is some content Description</td>
                         <td>
                             <div class="views-content2">
                                 <span>18, Karimu Laka St.</span>
@@ -102,7 +91,4 @@
         </div>
     </div>
                 
-                </div>
-
-
-            </section>
+                
