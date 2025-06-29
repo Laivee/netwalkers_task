@@ -109,6 +109,10 @@
                   <input type="file" name="image" id="uploadImage2" class="uploadBtn2" />
                 </div>
 
+                <?php if (!empty($upload_error)): ?>
+                    <p class="formError"><?php echo strip_tags($upload_error); ?></p>
+                <?php endif; ?>
+
                 <div class="formGroup2">
                   <button type="submit" class="saveBtn2">SAVE</button>
                 </div>
