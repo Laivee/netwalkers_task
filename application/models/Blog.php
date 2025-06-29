@@ -9,7 +9,12 @@ class Blog extends CI_Model {
 
     public function create_new_post($data)
     {
-            $this->db->insert('posts', $data);
+        $this->db->insert('posts', $data);
+    }
+    public function fetch_all_posts()
+    {
+        $query = $this->db->get('posts');
+        return $query->result_array();
     }
 
 }

@@ -1,7 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <!-- Placeholder for main page content -->
             
-
         <div class="filter-section2">
             <div class="filter-row2">
                 <div class="filter-group2">
@@ -38,24 +37,27 @@
             <table id="blogTable2" class="table2">
                 <thead>
                     <tr>
-                        <th>S/N</th>
+                        <th>ID</th>
                         <th>Author</th>
                         <th>Title</th>
+                        <th>Image</th>
                         <th>Description</th>
                         <th>Address</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
+                    <?php foreach($posts as $post) : ?>
                     <tr>
-                        <td>1</td>
-                        <td>Dev Etom</td>
-                        <td>Some Intersting title here</td>
-                        <td>Here is some content Description</td>
+                        <td>#<?php echo $post['id']; ?></td>
+                        <td><?php echo $post['author']; ?></td>
+                        <td><?php echo $post['title']; ?></td>
+                        <td><?php echo $post['featured_image']; ?></td>
+                        <td><?php echo $post['description']; ?></td>
                         <td>
                             <div class="views-content2">
-                                <span>18, Karimu Laka St.</span>
-                                <div class="badge2">Lagos</div>
+                                <span><?php echo $post['address']; ?></span>
+                                <div class="badge2"><?php echo $post['location']; ?></div>
                             </div>
                         </td>
                         <td>
@@ -76,6 +78,7 @@
                             </div>
                         </td>
                     </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>

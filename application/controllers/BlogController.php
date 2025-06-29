@@ -23,6 +23,8 @@ class BlogController extends CI_Controller
     public function index()
     {
 		$data['title'] = 'List Blogs';
+		$data['posts'] = $this->blog->fetch_all_posts();
+		
 		$this->load->view('head', $data);
 		$this->load->view('header', $data);
 		$this->load->view('index', $data);
@@ -37,7 +39,17 @@ class BlogController extends CI_Controller
 		//we can actually use is_unique[posts.title] without needing a callback method
         $this->form_validation->set_rules('title', 'Post Title', 'trim|required|callback_check_post_title'); 
 
+		//description
         $this->form_validation->set_rules('description', 'Description', 'trim|required|max_length[50]');
+
+		//Author
+        $this->form_validation->set_rules('author', 'Author', 'trim|required|max_length[50]');
+
+		//State or location
+        $this->form_validation->set_rules('location', 'Location', 'trim|required|max_length[50]');
+
+		//Address
+        $this->form_validation->set_rules('address', 'Address', 'trim|required|max_length[50]');
 
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('head', $data);
@@ -47,8 +59,11 @@ class BlogController extends CI_Controller
         } else {
 
 			$data = [
-				'title' => $this->input->post('title'),
-				'description' => $this->input->post('description')
+				'title' => $this->input->post('title', true),
+				'description' => $this->input->post('description', true),
+				'location' => $this->input->post('location', true),
+				'address' => $this->input->post('address', true),
+				'author' => $this->input->post('author', true)
 			];
 
 			$this->session->set_flashdata('success', 'Success! Your post was published successfully!');
