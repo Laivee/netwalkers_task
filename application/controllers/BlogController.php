@@ -45,21 +45,24 @@ class BlogController extends CI_Controller
     public function add_post()
     {
 		$data['title'] = 'Add Post';
+		
+		//Author
+        $this->form_validation->set_rules('author', 'Author', 'trim|required|max_length[50]');
 
+		//State or location
+        $this->form_validation->set_rules('location', 'Location', 'trim|required|max_length[50]');
+		
+		//Address
+        $this->form_validation->set_rules('address', 'Address', 'trim|required|max_length[50]');
+		
 		//we can actually use is_unique[posts.title] without needing a callback method
         $this->form_validation->set_rules('title', 'Post Title', 'trim|required|callback_check_post_title'); 
 
 		//description
         $this->form_validation->set_rules('description', 'Description', 'trim|required|max_length[50]');
 
-		//Author
-        $this->form_validation->set_rules('author', 'Author', 'trim|required|max_length[50]');
 
-		//State or location
-        $this->form_validation->set_rules('location', 'Location', 'trim|required|max_length[50]');
 
-		//Address
-        $this->form_validation->set_rules('address', 'Address', 'trim|required|max_length[50]');
 
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('head', $data);

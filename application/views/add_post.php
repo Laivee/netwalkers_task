@@ -1,6 +1,18 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
        <!-- Placeholder for main page content -->
+        <div style="color:red; font-weight:bold">
+        <?php if (validation_errors()): ?>
+            <ul>
+                <?php echo validation_errors('<li>', '</li>'); ?>
+            </ul>
+        <?php endif; ?>
+          
+          <?php if (!empty($upload_error)): ?>
+            <?php echo $upload_error; ?>
+          <?php endif; ?>
 
+        </div>
+        
               <form class="blogForm2" method="post" action="<?php base_url('post/add') ?>" enctype="multipart/form-data">
               
               <!-- Author -->
@@ -15,7 +27,6 @@
                     value="<?php echo set_value('author'); ?>"
                   />
                 </div>
-                <?php echo form_error('author', '<p class="formError">', '</p>');?> <br />
               
               <!-- State/Location -->
               <div class="formGroup2">
@@ -29,7 +40,6 @@
                     value="<?php echo set_value('location'); ?>"
                   />
                 </div>
-                <?php echo form_error('location', '<p class="formError">', '</p>');?> <br />
 
               <!-- Contact Address -->
               <div class="formGroup2">
@@ -43,7 +53,6 @@
                     value="<?php echo set_value('address'); ?>"
                   />
                 </div>
-                <?php echo form_error('address', '<p class="formError">', '</p>');?> <br />
 
                 <!-- Post Title -->
                 <div class="formGroup2">
@@ -57,7 +66,6 @@
                     value="<?php echo set_value('title'); ?>"
                   />
                 </div>
-                <?php echo form_error('title', '<p class="formError">', '</p>');?> <br />
 
 
                 <div class="formattingToolbar2">
@@ -96,7 +104,6 @@
                     placeholder="Post Description"
                   ><?php echo set_value('description'); ?></textarea>
                 </div>
-                <?php echo form_error('description', '<p class="formError">', '</p>');?><br/>
 
                 <div class="formGroup2">
                   <div id="uploadedImages2" class="uploadedImagesBox2">
