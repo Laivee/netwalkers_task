@@ -52,7 +52,7 @@
                         <td>#<?php echo $post['id']; ?></td>
                         <td><?php echo $post['author']; ?></td>
                         <td><?php echo $post['title']; ?></td>
-                        <td><?php echo $post['featured_image']; ?></td>
+                        <td><img src="<?php echo base_url().'uploads/'.$post['featured_image']; ?>" height="50" width=""/></td>
                         <td><?php echo $post['description']; ?></td>
                         <td>
                             <div class="views-content2">
