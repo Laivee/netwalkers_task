@@ -23,6 +23,8 @@ class BlogController extends CI_Controller
     public function index()
     {
 		$data['title'] = 'List Blogs';
+		$data['posts'] = $this->blog->fetch_all_posts();
+		
 		$this->load->view('head', $data);
 		$this->load->view('header', $data);
 		$this->load->view('index', $data);
